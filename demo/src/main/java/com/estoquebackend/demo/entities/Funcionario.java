@@ -1,8 +1,6 @@
 package com.estoquebackend.demo.entities;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
-
 import java.util.Objects;
 
 @Entity
@@ -32,7 +30,7 @@ public class Funcionario {
         return idFuncionario;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
+    public void setIdFuncionario(Integer idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
 

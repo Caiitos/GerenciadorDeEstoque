@@ -1,7 +1,6 @@
 package com.estoquebackend.demo.entities;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 

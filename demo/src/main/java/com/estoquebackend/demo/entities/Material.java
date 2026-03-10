@@ -22,18 +22,22 @@ public class Material {
     @Column
     private Integer quantidadeMaterial;
 
-    private LocalDate dataRetirada;
-    private LocalDate dataDevolucao;
+    @ManyToOne
+    @JoinColumn(name = "setor_id")
+    private Setor setor;
+
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    private Funcionario funcionario;
+
 
     public Material() {
     }
 
-    public Material(String nomeMaterial, String descricaoMaterial, Integer quantidadeMaterial, LocalDate dataRetirada, LocalDate dataDevolucao) {
+    public Material(String nomeMaterial, String descricaoMaterial, Integer quantidadeMaterial) {
         this.nomeMaterial = nomeMaterial;
         this.descricaoMaterial = descricaoMaterial;
         this.quantidadeMaterial = quantidadeMaterial;
-        this.dataRetirada = dataRetirada;
-        this.dataDevolucao = dataDevolucao;
     }
 
 
@@ -69,21 +73,6 @@ public class Material {
         this.quantidadeMaterial = quantidadeMaterial;
     }
 
-    public LocalDate getDataRetirada() {
-        return dataRetirada;
-    }
-
-    public void setDataRetirada(LocalDate dataRetirada) {
-        this.dataRetirada = dataRetirada;
-    }
-
-    public LocalDate getDataDevolucao() {
-        return dataDevolucao;
-    }
-
-    public void setDataDevolucao(LocalDate dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
-    }
 
     @Override
     public boolean equals(Object o) {
