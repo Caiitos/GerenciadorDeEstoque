@@ -2,7 +2,7 @@ package com.estoquebackend.demo.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -16,28 +16,36 @@ public class Material {
     @Column(length = 45, nullable = false)
     private String nomeMaterial;
 
-    @Column(length = 45)
+    @Column(length = 45, name = "descricao_material")
     private String descricaoMaterial;
 
-    @Column
+    @Column(name = "quantidade_materiais", nullable = false)
     private Integer quantidadeMaterial;
 
     @ManyToOne
-    @JoinColumn(name = "setor_id")
+    @JoinColumn(name = "fk_setor")
     private Setor setor;
 
     @ManyToOne
-    @JoinColumn(name = "funcionario_id")
+    @JoinColumn(name = "fk_funcionario")
     private Funcionario funcionario;
+
+    @Column(length = 45, nullable = false, name = "data_reitrada_de_material")
+    private LocalDateTime dataRetiradaMaterial;
 
 
     public Material() {
     }
 
-    public Material(String nomeMaterial, String descricaoMaterial, Integer quantidadeMaterial) {
+    public Material(String nomeMaterial, String descricaoMaterial, Integer quantidadeMaterial,
+                    Setor setor, Funcionario funcionario, LocalDateTime dataRetiradaMaterial) {
+
         this.nomeMaterial = nomeMaterial;
         this.descricaoMaterial = descricaoMaterial;
         this.quantidadeMaterial = quantidadeMaterial;
+        this.setor = setor;
+        this.funcionario = funcionario;
+        this.dataRetiradaMaterial = dataRetiradaMaterial;
     }
 
 
@@ -73,6 +81,29 @@ public class Material {
         this.quantidadeMaterial = quantidadeMaterial;
     }
 
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public LocalDateTime getDataRetiradaMaterial() {
+        return dataRetiradaMaterial;
+    }
+
+    public void setDataRetiradaMaterial(LocalDateTime dataRetiradaMaterial) {
+        this.dataRetiradaMaterial = dataRetiradaMaterial;
+    }
 
     @Override
     public boolean equals(Object o) {

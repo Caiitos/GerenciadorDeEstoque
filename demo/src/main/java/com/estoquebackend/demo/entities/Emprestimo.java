@@ -16,27 +16,33 @@ public class Emprestimo {
     @Column(name = "data_devolucao")
     private LocalDate dataDevolucao;
 
-    @Column(name = "data_Retirada")
+    @Column(name = "data_retirada")
     private LocalDate dataRetirada;
 
+    @Column(name = "quantidade")
+    private Integer quantidade;
+
     @ManyToOne
-    @JoinColumn(name = "ferramenta_id")
+    @JoinColumn(name = "fk_ferramenta")
     private Ferramentas ferramentas;
 
     @ManyToOne
-    @JoinColumn(name = "funcionario_id")
+    @JoinColumn(name = "fk_funcionario")
     private Funcionario funcionario;
 
     public Emprestimo() {
 
     }
 
-    public Emprestimo(LocalDate dataDevolucao, LocalDate dataRetirada) {
+    public Emprestimo(LocalDate dataDevolucao, LocalDate dataRetirada, Funcionario funcionario, Ferramentas ferramentas, Integer quantidade) {
         this.dataDevolucao = dataDevolucao;
         this.dataRetirada = dataRetirada;
+        this.ferramentas = ferramentas;
+        this.funcionario = funcionario;
+        this.quantidade = quantidade;
     }
 
-    public Integer getIdEmpestimo() {
+    public Integer getIdEmprestimo() {
         return idEmprestimo;
     }
 
@@ -60,15 +66,39 @@ public class Emprestimo {
         this.dataRetirada = dataRetirada;
     }
 
+    public Ferramentas getFerramentas() {
+        return ferramentas;
+    }
+
+    public void setFerramentas(Ferramentas ferramentas) {
+        this.ferramentas = ferramentas;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Emprestimo that = (Emprestimo) o;
-        return Objects.equals(getIdEmpestimo(), that.getIdEmpestimo());
+        return Objects.equals(getIdEmprestimo(), that.getIdEmprestimo());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getIdEmpestimo());
+        return Objects.hashCode(getIdEmprestimo());
     }
 }

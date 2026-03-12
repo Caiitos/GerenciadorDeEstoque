@@ -13,15 +13,16 @@ public class Ferramentas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idFerramenta;
 
-    @Column(length = 45,  nullable = false)
+    @Column(length = 45,  nullable = false,name = "nome_ferramenta")
     private String nomeFerramenta;
 
-    @Column(length = 225)
+    @Column(length = 225,name = "descricao_ferramenta")
     private String descricaoFerramenta;
 
+    @Column(name = "quantidade_ferramentas")
     private Integer quantidade;
 
-    @Column(length = 45)
+    @Column(length = 45,name = "estado_ferramenta")
     private String estado;
 
     public Ferramentas() {
